@@ -67,6 +67,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\bigInsects.png" />
+    <Content Include="assets\images\ocean.gif" />
+    <Content Include="assets\images\smallInsects.png" />
+    <Content Include="assets\images\space.jpg" />
+    <Content Include="assets\images\spaceShuttle.jpg" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
     <Content Include="Script\lib\easeljs-0.8.0.min.js" />
@@ -80,11 +85,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\" />
-    <Folder Include="Script\objects\" />
+    <Folder Include="assets\audio\" />
+    <Folder Include="assets\fonts\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Script\constants.ts" />
     <TypeScriptCompile Include="Script\game.ts" />
+    <TypeScriptCompile Include="Script\objects\bigInsect.ts" />
+    <TypeScriptCompile Include="Script\objects\gameobject.ts" />
+    <TypeScriptCompile Include="Script\objects\smallInsect.ts" />
+    <TypeScriptCompile Include="Script\objects\space.ts" />
+    <TypeScriptCompile Include="Script\objects\spaceShuttle.ts" />
     <TypeScriptCompile Include="Script\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Script\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Script\typings\preloadjs\preloadjs.d.ts" />
