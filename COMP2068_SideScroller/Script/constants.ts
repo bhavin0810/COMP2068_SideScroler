@@ -11,5 +11,6 @@
 
     export var PLAYER_LIVES: number = 5;
     export var SMALLINSECTS_NUM: number = 3;
-    export var BIGINSECTS_NUM: number = 2;
+    //export var BIGINSECTS_NUM: number = 1; -- this could be used in next level of the game beacuse GAME BECOME TO COMPLICATED
+    export var COIN_NUM: number = 2;
 }  

@@ -6,7 +6,7 @@
         constructor() {
             super("bigInsects");
             this.name = "bigInsects";
-            //this.soundString = "thunder";
+            this.soundString = "thunder";
 
             this._reset();
 

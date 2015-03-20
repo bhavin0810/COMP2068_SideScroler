@@ -59,6 +59,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\engine.ogg" />
+    <Content Include="assets\audio\thunder.ogg" />
+    <Content Include="assets\audio\yay.ogg" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -68,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\images\bigInsects.png" />
+    <Content Include="assets\images\coin.png" />
     <Content Include="assets\images\ocean.gif" />
     <Content Include="assets\images\smallInsects.png" />
     <Content Include="assets\images\space.jpg" />
@@ -85,13 +89,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\audio\" />
     <Folder Include="assets\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Script\constants.ts" />
     <TypeScriptCompile Include="Script\game.ts" />
     <TypeScriptCompile Include="Script\objects\bigInsect.ts" />
+    <TypeScriptCompile Include="Script\objects\coin.ts" />
     <TypeScriptCompile Include="Script\objects\gameobject.ts" />
     <TypeScriptCompile Include="Script\objects\smallInsect.ts" />
     <TypeScriptCompile Include="Script\objects\space.ts" />

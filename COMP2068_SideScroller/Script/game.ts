@@ -12,6 +12,7 @@
 /// <reference path="objects/spaceshuttle.ts" />
 /// <reference path="objects/smallinsect.ts" />
 /// <reference path="objects/biginsect.ts" />
+/// <reference path="objects/coin.ts" />
 
 
 
@@ -26,7 +27,8 @@ var game: createjs.Container;
 var space: objects.Space;
 var spaceShuttle: objects.SpaceShuttle;
 var smallInsect: objects.SmallInsect[] = [];
-var bigInsect: objects.BigInsect[] = [];
+//var bigInsect: objects.BigInsect[] = [];  - this could be used in level of diffucuty
+var coin: objects.Coin[] = [];
 
 // asset manifest - array of asset objects
 var manifest = [
@@ -34,6 +36,10 @@ var manifest = [
     { id: "space", src: "assets/images/space.jpg" },
     { id: "smallInsects", src: "assets/images/smallInsects.png" },
     { id: "bigInsects", src: "assets/images/bigInsects.png" },    
+    { id: "coin", src: "assets/images/coin.png" },    
+    { id: "engine", src: "assets/audio/engine.ogg" },
+    { id: "yay", src: "assets/audio/yay.ogg" },
+    { id: "thunder", src: "assets/audio/thunder.ogg" }
 ];
 
 
@@ -65,6 +71,38 @@ function setupStats() {
     document.body.appendChild(stats.domElement);
 }
 
+// Calculate the distance between two points ++++++++++++++++++++++++++++++++++++++
+function distance(p1: createjs.Point, p2: createjs.Point): number {
+
+    return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
+}
+
+//CHECK COLLISION  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function checkCollision(collider: objects.GameObject) {
+    var p1: createjs.Point = new createjs.Point();
+    var p2: createjs.Point = new createjs.Point();
+    p1.x = spaceShuttle.x;
+    p1.y = spaceShuttle.y;
+    p2.x = collider.x;
+    p2.y = collider.y;
+    if (distance(p2, p1) < ((spaceShuttle.height * 0.5) + (collider.height * 0.5))) {
+        if (!collider.isColliding) {
+            createjs.Sound.play(collider.soundString);
+            collider.isColliding = true;
+            /*
+            switch (collider.name) {
+                case "island":
+                    scoreboard.score += 100;
+                case "cloud":
+                    scoreboard.lives--;
+                    break;
+            } */
+        }
+    } else {
+        collider.isColliding = false;
+    }
+}
+
 //GAME LOOP +++++++++++++++++++++++++++++
 function gameLoop() {
     stats.begin(); // Begin metering
@@ -73,12 +111,17 @@ function gameLoop() {
 
     for (var insect = constants.SMALLINSECTS_NUM; insect> 0; insect--) {
         smallInsect[insect].update();
-        
+        checkCollision(smallInsect[insect]);
     }
-
+    /*
     for (var insect = constants.BIGINSECTS_NUM; insect > 0; insect--) {
         bigInsect[insect].update();
-
+        checkCollision(bigInsect[insect]);
+    }
+    */
+    for (var count = constants.COIN_NUM; count > 0; count--) {
+        coin[count].update();
+        checkCollision(coin[count]);
     }
 
     stage.update(); // Refreshes our stage
@@ -106,10 +149,15 @@ function main() {
         smallInsect[insect] = new objects.SmallInsect();
         game.addChild(smallInsect[insect]);
     }
-
+    /*
     for (var insect = constants.BIGINSECTS_NUM; insect > 0; insect--) {
         bigInsect[insect] = new objects.BigInsect();
         game.addChild(bigInsect[insect]);
+    }
+    */
+    for (var count = constants.COIN_NUM; count > 0; count--) {
+        coin[count] = new objects.Coin();
+        game.addChild(coin[count]);
     }
 
     stage.addChild(game);

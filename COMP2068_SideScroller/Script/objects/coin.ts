@@ -1,12 +1,12 @@
 ﻿module objects {
 
-    export class SmallInsect extends objects.GameObject {
+    export class Coin extends objects.GameObject {
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-            super("smallInsects");
-            this.name = "smallInsects";
-            this.soundString = "thunder";
+            super("coin");
+            this.name = "coin";
+            this.soundString = "yay";
 
             this._reset();
 
@@ -29,12 +29,15 @@
             }
         }
 
+
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
+
         public update() {
             this.y -= this._dy;
             this.x += this._dx;
+
             this._checkBounds();
         }
-
     }
-}
+
+}     
