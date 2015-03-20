@@ -13,6 +13,8 @@
 /// <reference path="objects/smallinsect.ts" />
 /// <reference path="objects/biginsect.ts" />
 /// <reference path="objects/coin.ts" />
+/// <reference path="objects/label.ts" />
+/// <reference path="objects/scoreboard.ts" />
 
 
 
@@ -29,6 +31,8 @@ var spaceShuttle: objects.SpaceShuttle;
 var smallInsect: objects.SmallInsect[] = [];
 //var bigInsect: objects.BigInsect[] = [];  - this could be used in level of diffucuty
 var coin: objects.Coin[] = [];
+var scoreboard: objects.ScoreBoard;
+
 
 // asset manifest - array of asset objects
 var manifest = [
@@ -89,14 +93,15 @@ function checkCollision(collider: objects.GameObject) {
         if (!collider.isColliding) {
             createjs.Sound.play(collider.soundString);
             collider.isColliding = true;
-            /*
+            
             switch (collider.name) {
-                case "island":
+                case "coin":
                     scoreboard.score += 100;
-                case "cloud":
+                    break;
+                case "smallInsects":
                     scoreboard.lives--;
                     break;
-            } */
+            } 
         }
     } else {
         collider.isColliding = false;
@@ -109,19 +114,29 @@ function gameLoop() {
     space.update();
     spaceShuttle.update();
 
-    for (var insect = constants.SMALLINSECTS_NUM; insect> 0; insect--) {
-        smallInsect[insect].update();
-        checkCollision(smallInsect[insect]);
+    if (scoreboard.lives > 0) {
+        for (var insect = constants.SMALLINSECTS_NUM; insect > 0; insect--) {
+            smallInsect[insect].update();
+            checkCollision(smallInsect[insect]);
+        }
+        /*
+        for (var insect = constants.BIGINSECTS_NUM; insect > 0; insect--) {
+            bigInsect[insect].update();
+            checkCollision(bigInsect[insect]);
+        }
+        */
+        for (var count = constants.COIN_NUM; count > 0; count--) {
+            coin[count].update();
+            checkCollision(coin[count]);
+        }
     }
-    /*
-    for (var insect = constants.BIGINSECTS_NUM; insect > 0; insect--) {
-        bigInsect[insect].update();
-        checkCollision(bigInsect[insect]);
-    }
-    */
-    for (var count = constants.COIN_NUM; count > 0; count--) {
-        coin[count].update();
-        checkCollision(coin[count]);
+    scoreboard.update();
+
+    if (scoreboard.lives < 1) {
+        createjs.Sound.stop();
+        game.removeAllChildren();
+        //stage.removeChild(game);
+        stage.removeAllChildren();
     }
 
     stage.update(); // Refreshes our stage
@@ -159,6 +174,10 @@ function main() {
         coin[count] = new objects.Coin();
         game.addChild(coin[count]);
     }
+
+    //Add Scoreboard
+    scoreboard = new objects.ScoreBoard();
+
 
     stage.addChild(game);
 

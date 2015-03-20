@@ -97,6 +97,8 @@
     <TypeScriptCompile Include="Script\objects\bigInsect.ts" />
     <TypeScriptCompile Include="Script\objects\coin.ts" />
     <TypeScriptCompile Include="Script\objects\gameobject.ts" />
+    <TypeScriptCompile Include="Script\objects\label.ts" />
+    <TypeScriptCompile Include="Script\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Script\objects\smallInsect.ts" />
     <TypeScriptCompile Include="Script\objects\space.ts" />
     <TypeScriptCompile Include="Script\objects\spaceShuttle.ts" />
