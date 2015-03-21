@@ -71,11 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\images\bigInsects.png" />
-    <Content Include="assets\images\coin.png" />
-    <Content Include="assets\images\ocean.gif" />
+    <Content Include="assets\images\coin.gif" />
+    <Content Include="assets\images\playButton.png" />
     <Content Include="assets\images\smallInsects.png" />
     <Content Include="assets\images\space.jpg" />
     <Content Include="assets\images\spaceShuttle.jpg" />
+    <Content Include="assets\images\tryAgainButton.png" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
     <Content Include="Script\lib\easeljs-0.8.0.min.js" />
@@ -95,6 +96,7 @@
     <TypeScriptCompile Include="Script\constants.ts" />
     <TypeScriptCompile Include="Script\game.ts" />
     <TypeScriptCompile Include="Script\objects\bigInsect.ts" />
+    <TypeScriptCompile Include="Script\objects\button.ts" />
     <TypeScriptCompile Include="Script\objects\coin.ts" />
     <TypeScriptCompile Include="Script\objects\gameobject.ts" />
     <TypeScriptCompile Include="Script\objects\label.ts" />
@@ -102,6 +104,9 @@
     <TypeScriptCompile Include="Script\objects\smallInsect.ts" />
     <TypeScriptCompile Include="Script\objects\space.ts" />
     <TypeScriptCompile Include="Script\objects\spaceShuttle.ts" />
+    <TypeScriptCompile Include="Script\states\gameover.ts" />
+    <TypeScriptCompile Include="Script\states\menu.ts" />
+    <TypeScriptCompile Include="Script\states\play.ts" />
     <TypeScriptCompile Include="Script\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Script\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Script\typings\preloadjs\preloadjs.d.ts" />

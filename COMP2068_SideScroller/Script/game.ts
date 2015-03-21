@@ -14,7 +14,15 @@
 /// <reference path="objects/biginsect.ts" />
 /// <reference path="objects/coin.ts" />
 /// <reference path="objects/label.ts" />
+/// <reference path="objects/button.ts" />
+
 /// <reference path="objects/scoreboard.ts" />
+
+/// <reference path="states/gameover.ts" />
+/// <reference path="states/play.ts" />
+/// <reference path="states/menu.ts" />
+
+
 
 
 
@@ -23,6 +31,23 @@ var stats: Stats = new Stats();
 var canvas;
 var stage: createjs.Stage;
 var assetLoader: createjs.LoadQueue;
+
+// Score Variables
+var finalScore: number = 0;
+var highScore: number = 0;
+
+// State Variables
+var currentState: number;
+var currentStateFunction: any;
+var stateChanged: boolean = false;
+
+
+// Game Objects
+var gameOver: states.GameOver;
+var play: states.Play;
+var menu: states.Menu;
+
+/*
 var game: createjs.Container;
 
 // Game Objects
@@ -32,7 +57,7 @@ var smallInsect: objects.SmallInsect[] = [];
 //var bigInsect: objects.BigInsect[] = [];  - this could be used in level of diffucuty
 var coin: objects.Coin[] = [];
 var scoreboard: objects.ScoreBoard;
-
+*/
 
 // asset manifest - array of asset objects
 var manifest = [
@@ -40,7 +65,9 @@ var manifest = [
     { id: "space", src: "assets/images/space.jpg" },
     { id: "smallInsects", src: "assets/images/smallInsects.png" },
     { id: "bigInsects", src: "assets/images/bigInsects.png" },    
-    { id: "coin", src: "assets/images/coin.png" },    
+    { id: "coin", src: "assets/images/coin.gif" },    
+    { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
+    { id: "playButton", src: "assets/images/playButton.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
@@ -63,6 +90,8 @@ function init() {
     createjs.Ticker.addEventListener("tick", gameLoop);
     setupStats();
 
+    currentState = constants.MENU_STATE;
+    changeState(currentState);
     main();
 }
 
@@ -75,6 +104,7 @@ function setupStats() {
     document.body.appendChild(stats.domElement);
 }
 
+/*
 // Calculate the distance between two points ++++++++++++++++++++++++++++++++++++++
 function distance(p1: createjs.Point, p2: createjs.Point): number {
 
@@ -107,10 +137,21 @@ function checkCollision(collider: objects.GameObject) {
         collider.isColliding = false;
     }
 }
-
+*/
 //GAME LOOP +++++++++++++++++++++++++++++
 function gameLoop() {
     stats.begin(); // Begin metering
+
+    //update the current state
+    currentStateFunction.update();
+
+    //check for the state changed
+
+    if (stateChanged) {
+        changeState(currentState);
+    }
+
+    /*
     space.update();
     spaceShuttle.update();
 
@@ -125,6 +166,7 @@ function gameLoop() {
             checkCollision(bigInsect[insect]);
         }
         */
+    /*
         for (var count = constants.COIN_NUM; count > 0; count--) {
             coin[count].update();
             checkCollision(coin[count]);
@@ -138,7 +180,7 @@ function gameLoop() {
         //stage.removeChild(game);
         stage.removeAllChildren();
     }
-
+    */
     stage.update(); // Refreshes our stage
 
     stats.end(); // End metering
@@ -146,6 +188,7 @@ function gameLoop() {
 
 // Our Game Kicks off in here
 function main() {
+    /*
     // Instantiate Game Container
     game = new createjs.Container();
 
@@ -170,6 +213,7 @@ function main() {
         game.addChild(bigInsect[insect]);
     }
     */
+    /*
     for (var count = constants.COIN_NUM; count > 0; count--) {
         coin[count] = new objects.Coin();
         game.addChild(coin[count]);
@@ -180,5 +224,28 @@ function main() {
 
 
     stage.addChild(game);
+    */
+}
 
+// Our Game Kicks off in here
+function changeState(state: number) {
+
+    stateChanged = false;
+    switch (state) {
+        case constants.MENU_STATE:
+            // Instantiate Menu State
+            menu = new states.Menu();
+            currentStateFunction = menu;
+            break;
+        case constants.PLAY_STATE:
+            // Instantiate Play State
+            play = new states.Play();
+            currentStateFunction = play;
+            break;
+        case constants.GAME_OVER_STATE:
+            // Instantiate Game Over State
+            gameOver = new states.GameOver();
+            currentStateFunction = gameOver;
+            break;
+    }
 }

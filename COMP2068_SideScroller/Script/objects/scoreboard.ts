@@ -11,7 +11,7 @@
         private _scoreLabel: createjs.Text;
 
         //CONSTRUCTORS
-        constructor() {
+        constructor(game: createjs.Container) {
             this._livesLabel = new createjs.Text("LIVES: ", constants.FONT_SIZE + " " +
                 constants.FONT_FAMILY, constants.FONT_COLOUR);
             game.addChild(this._livesLabel);

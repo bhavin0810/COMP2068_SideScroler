@@ -13,4 +13,10 @@
     export var SMALLINSECTS_NUM: number = 3;
     //export var BIGINSECTS_NUM: number = 1; -- this could be used in next level of the game beacuse GAME BECOME TO COMPLICATED
     export var COIN_NUM: number = 2;
+
+    // States Constants
+    export var MENU_STATE: number = 0;
+    export var PLAY_STATE: number = 1;
+    export var GAME_OVER_STATE: number = 2;
+
 }  
