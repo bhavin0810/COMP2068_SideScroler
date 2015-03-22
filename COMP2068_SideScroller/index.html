@@ -1,0 +1,49 @@
+﻿<!--
+//Porject Name: Assignment2- Side Scroller Game - GALAXIAN
+//Programmer: Bhavin Patel
+//Description: Html Page of the Side Scroller game
+//Date: Mar 21 2015
+//version 1.0 Add the Html Page for the Side Scroller game
+
+-->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galaxian</title>
+
+    <!-- CSS Section-->
+    <link href="css/game.css" rel="stylesheet" />
+</head>
+<body onload="preload()">
+    <!-- Canvas where the Game will Happen-->
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <!-- JAVA SCRIPTS-------------->
+    <script src="Script/lib/easeljs-0.8.0.min.js"></script>
+    <script src="Script/lib/tweenjs-0.6.0.min.js"></script>
+    <script src="Script/lib/soundjs-0.6.0.min.js"></script>
+    <script src="Script/lib/preloadjs-0.6.0.min.js"></script>
+    <script src="Script/lib/Stats.js"></script>
+
+    <!-- GAME SCRIPTS-->
+    <script src="Script/constants.js"></script>
+    <script src="Script/objects/gameobject.js"></script>
+    <script src="Script/objects/space.js"></script>
+    <script src="Script/objects/spaceShuttle.js"></script>
+    <script src="Script/objects/smallInsect.js"></script>
+    <script src="Script/objects/bigInsect.js"></script>
+    <script src="Script/objects/coin.js"></script>
+    <script src="Script/objects/label.js"></script>
+    <script src="Script/objects/button.js"></script>
+    <script src="Script/objects/scoreboard.js"></script>
+
+    <script src="Script/states/gameover.js"></script>
+    <script src="Script/states/play.js"></script>
+    <script src="Script/states/menu.js"></script>
+    <script src="Script/game.js"></script>
+</body>
+</html>

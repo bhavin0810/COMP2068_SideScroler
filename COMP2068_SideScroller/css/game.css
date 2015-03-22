@@ -1,3 +1,11 @@
-﻿#canvas{
+﻿/*
+//Porject Name: Assignment2- Side Scroller Game - GALAXIAN
+//Programmer: Bhavin Patel
+//Description: CSS for the side Scroller game
+//Date: Mar 21 2015
+//version 1.0 Add the border the of the Canvas Element.
+*/
+
+#canvas{
     border: dashed 1px black;
 }
