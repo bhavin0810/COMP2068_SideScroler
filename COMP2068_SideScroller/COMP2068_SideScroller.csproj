@@ -70,6 +70,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\coinCollect.wav" />
+    <Content Include="assets\audio\galaxian.mp3" />
     <Content Include="assets\images\bigInsects.png" />
     <Content Include="assets\images\coin.gif" />
     <Content Include="assets\images\playButton.png" />

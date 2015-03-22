@@ -23,7 +23,7 @@ var objects;
             //set the name of the object
             this.name = "coin";
             //set the sound
-            this.soundString = "yay";
+            this.soundString = "coinCollect";
             //call the reset method of coin object
             this._reset();
         } //end of constructor

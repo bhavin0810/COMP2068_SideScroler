@@ -64,8 +64,8 @@ var manifest = [
     { id: "coin", src: "assets/images/coin.gif" },    
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
-    { id: "engine", src: "assets/audio/engine.ogg" },
-    { id: "yay", src: "assets/audio/yay.ogg" },
+    { id: "galaxian", src: "assets/audio/galaxian.mp3" },
+    { id: "coinCollect", src: "assets/audio/coinCollect.wav" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
 ];
 

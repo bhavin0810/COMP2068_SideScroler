@@ -21,7 +21,7 @@ var objects;
             //call the constructor of the super class
             _super.call(this, "spaceShuttle");
             this.x = constants.SCREEN_WIDTH - 30;
-            createjs.Sound.play("engine", { loop: -1 });
+            createjs.Sound.play("galaxian", { loop: -1 });
         }
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         SpaceShuttle.prototype.update = function () {

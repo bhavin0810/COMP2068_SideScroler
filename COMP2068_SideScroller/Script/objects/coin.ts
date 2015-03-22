@@ -21,7 +21,7 @@ module objects {
             this.name = "coin";
 
             //set the sound
-            this.soundString = "yay";
+            this.soundString = "coinCollect";
 
             //call the reset method of coin object
             this._reset();
